@@ -1,0 +1,108 @@
+/* === 1. CSS STYLING (This would be your style.css file) === */
+        /* ======================================================= */
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-color: #f0f4f8;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Carousel Viewport/Frame (The Visible Window) */
+        #carousel-component {
+            position: relative;
+            width: 900px;
+            max-width: 95vw;
+            /* FIX 1: Explicit Height for Text Containment */
+            height: 400px; 
+            overflow: hidden; 
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+        }
+
+        /* Inner Slide Track (Contains ALL slides) */
+        #slide-track {
+            display: flex;
+            /* FIX 2: Width must be 20x the viewport width (10 original + 10 clones) */
+            width: 2000%; 
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0; 
+            /* FIX 3: Continuous, non-stop animation */
+            animation: scroll 60s linear infinite; 
+        }
+
+        #carousel-component:hover #slide-track {
+            animation-play-state: paused;
+        }
+
+        /* Individual Slide Styles */
+        .slide {
+            /* FIX 4: Each slide is 1/20th of the 2000% track width = 100% of the viewport */
+            width: calc(100% / 20); 
+            flex-shrink: 0;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        
+        /* Legibility and Containment Fix */
+        .slide-content {
+            background-color: rgba(0, 0, 0, 0.65);
+            padding: 30px 40px;
+            border-radius: 12px;
+            max-width: 90%; 
+            margin: auto; 
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+        }
+
+        .slide-content h2 {
+            /* FIX 5: Use viewport units (vw) for font size to ensure responsiveness and prevent overflow */
+            font-size: 3.5vw; 
+            line-height: 1.3;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .slide-content p {
+            font-size: 1.5vw;
+            font-style: italic;
+            font-weight: 300;
+        }
+        
+        /* Background Images (Placeholder images used for demonstration) */
+        .slide:nth-child(1), .slide:nth-child(11) { background-image: url('https://images.unsplash.com/photo-1542838132478-f73244243875?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
+        .slide:nth-child(2), .slide:nth-child(12) { background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
+        .slide:nth-child(3), .slide:nth-child(13) { background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
+        .slide:nth-child(4), .slide:nth-child(14) { background-image: url('https://images.unsplash.com/photo-1517486801-447a11122be2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
+        .slide:nth-child(5), .slide:nth-child(15) { background-image: url('https://images.unsplash.com/photo-1510511459019-5beee49247c7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
+        .slide:nth-child(6), .slide:nth-child(16) { background-image: url('https://images.unsplash.com/photo-1522851475739-165edb59a43a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
+        .slide:nth-child(7), .slide:nth-child(17) { background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
+        .slide:nth-child(8), .slide:nth-child(18) { background-image: url('https://images.unsplash.com/photo-1526374965328-7f66a2b53e77?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
+        .slide:nth-child(9), .slide:nth-child(19) { background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
+        .slide:nth-child(10), .slide:nth-child(20) { background-image: url('https://images.unsplash.com/photo-1506765515384-028b60a970df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); }
+
+        /* Keyframe for Infinite Scroll (The Mary-Go-Round effect) */
+        @keyframes scroll {
+            0% { 
+                /* Start at the beginning of the first set of 10 slides */
+                transform: translate3d(0, 0, 0); 
+            }
+            100% { 
+                /* Scroll exactly 50% (10 slides) across the 20-slide track, 
+                   which makes the animation loop seamlessly */
+                transform: translate3d(-50%, 0, 0); 
+            }
+        }
